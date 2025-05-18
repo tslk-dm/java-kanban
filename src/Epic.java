@@ -53,7 +53,6 @@ public class Epic extends Task {
         }
     }
 
-
     @Override
     public String toString() {
         return "Epic{" +
@@ -65,8 +64,3 @@ public class Epic extends Task {
                 '}';
     }
 }
-
-
-// статсус для эпика
-// если у эпика все статусы одинаковы, то статус эпика это статус его подзадач
-// иначе в прогресе (если есть 2 разных статуса);

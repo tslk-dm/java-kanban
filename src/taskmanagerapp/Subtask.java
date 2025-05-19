@@ -1,3 +1,5 @@
+package taskmanagerapp;
+
 public class Subtask extends Task {
     private int epicId;
 
@@ -21,7 +23,7 @@ public class Subtask extends Task {
 
     @Override
     public String toString() {
-        return "Subtask{" +
+        return "taskmanagerapp.Subtask{" +
                 "id=" + super.getId() +
                 ", name='" + super.getName() + '\'' +
                 ", description='" + super.getDescription() + '\'' +

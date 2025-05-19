@@ -1,3 +1,5 @@
+package taskmanagerapp;
+
 public class Task {
     private int id;
     private String name;
@@ -51,7 +53,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{" +
+        return "taskmanagerapp.Task{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +

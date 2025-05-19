@@ -1,4 +1,8 @@
-import taskmanagerapp.*;
+import tracker.model.Epic;
+import tracker.model.Status;
+import tracker.model.Subtask;
+import tracker.model.Task;
+import tracker.service.Manager;
 
 public class Main {
 

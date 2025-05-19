@@ -1,4 +1,4 @@
-package taskmanagerapp;
+package tracker.model;
 
 import java.util.ArrayList;
 

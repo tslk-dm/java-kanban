@@ -1,7 +1,10 @@
-package taskmanagerapp;
+package tracker.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import tracker.model.Epic;
+import tracker.model.Subtask;
+import tracker.model.Task;
 
 public class Manager {
     private int counterId = 0;

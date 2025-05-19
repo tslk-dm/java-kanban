@@ -1,4 +1,4 @@
-package taskmanagerapp;
+package tracker.model;
 
 public class Task {
     private int id;

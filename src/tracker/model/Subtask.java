@@ -23,7 +23,7 @@ public class Subtask extends Task {
 
     @Override
     public String toString() {
-        return "taskmanagerapp.Subtask{" +
+        return "tracker.Subtask{" +
                 "id=" + super.getId() +
                 ", name='" + super.getName() + '\'' +
                 ", description='" + super.getDescription() + '\'' +

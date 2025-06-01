@@ -53,7 +53,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return "taskmanagerapp.Task{" +
+        return "tracker.Task{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +

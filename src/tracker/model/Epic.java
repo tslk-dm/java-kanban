@@ -57,7 +57,7 @@ public class Epic extends Task {
 
     @Override
     public String toString() {
-        return "taskmanagerapp.Epic{" +
+        return "tracker.Epic{" +
                 "id=" + super.getId() +
                 ", name='" + super.getName() + '\'' +
                 ", description='" + super.getDescription() + '\'' +

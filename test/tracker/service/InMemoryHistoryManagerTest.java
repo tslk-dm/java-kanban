@@ -13,12 +13,12 @@ public class InMemoryHistoryManagerTest {
     public static HistoryManager historyManager;
 
     @BeforeEach
-    public void beforeEach(){
+    public void beforeEach() {
         historyManager = new InMemoryHistoryManager();
     }
 
     @Test
-    public void PreviousTaskShouldBeSavedInHistoryManager(){
+    public void TaskShouldBeSaved() {
         Task task1 = new Task("task1", "desc1", Status.NEW);
         Task task2 = new Task("task2", "desс2", Status.IN_PROGRESS);
 
@@ -36,7 +36,7 @@ public class InMemoryHistoryManagerTest {
     }
 
     @Test
-    public void PreviousEpicShouldBeSavedInHistoryManager(){
+    public void EpicShouldBeSaved() {
         Epic epic1 = new Epic("epic1", "desc1");
         Epic epic2 = new Epic("epic2", "desc2");
 
@@ -55,7 +55,7 @@ public class InMemoryHistoryManagerTest {
     }
 
     @Test
-    public void PreviousSubtaskShouldBeSavedInHistoryManager(){
+    public void SubtaskShouldBeSaved() {
         Subtask subtask1 = new Subtask("subtask1", "desc1", Status.NEW, 1);
         Subtask subtask2 = new Subtask("subtask2", "desc2", Status.NEW, 2);
 

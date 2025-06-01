@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 class TaskTest {
     @Test
-    public void TasksWithEqualsIdShouldBeEquals () {
+    public void TasksShouldBeEquals() {
         Task task1 = new Task(1, "task1", "desc1", Status.NEW);
         Task task2 = new Task(1, "task2", "des2", Status.DONE);
 

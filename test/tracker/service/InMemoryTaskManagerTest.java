@@ -1,5 +1,6 @@
 package tracker.service;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -219,5 +220,22 @@ class InMemoryTaskManagerTest {
                 "При добавлении subtask изменяется поле status");
         Assertions.assertEquals(expectedSubtask.getEpicId(), actualSubtask.getEpicId(),
                 "При добавлении subtask изменяется поле epicId");
+    }
+
+    @Test
+    public void SubtaskShouldBeRemovedFromEpic() {
+        Epic epic = new Epic(1, "epic1", "desc1");
+        Subtask subtask1 = new Subtask("subtask1", "desc1", Status.NEW, 1);
+        Subtask subtask2 = new Subtask("subtask2", "desc2", Status.NEW, 1);
+
+        taskManager.createEpic(epic);
+        taskManager.createSubtask(subtask1);
+        taskManager.createSubtask(subtask2);
+        taskManager.deleteSubtaskById(2);
+
+        Assertions.assertEquals(1, taskManager.getEpicById(1).getSubtasks().size(),
+                "Подзадача не удаляется из Epic после удаления из Subtasks");
+        Assertions.assertEquals(3, taskManager.getEpicById(1).getSubtasks().getFirst().getId(),
+                "Подзадача не удаляется из Epic после удаления из Subtasks");
     }
 }

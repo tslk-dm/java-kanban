@@ -1,11 +1,8 @@
 package tracker.service;
 
-import tracker.model.Status;
 import tracker.model.Task;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 
 public class InMemoryHistoryManager implements HistoryManager {
@@ -19,7 +16,7 @@ public class InMemoryHistoryManager implements HistoryManager {
         public Node prev;
         public Task data;
 
-        public Node(Task data){
+        public Node(Task data) {
             this.data = data;
             this.next = null;
             this.prev = null;
@@ -70,12 +67,12 @@ public class InMemoryHistoryManager implements HistoryManager {
     // Добавлении задачи в историю
     @Override
     public void add(Task task) {
-        if (hashMap.containsKey(task.getId())){
+        if (hashMap.containsKey(task.getId())) {
             removeNode(hashMap.get(task.getId()));
             hashMap.remove(task.getId());
         }
 
-        if (size >=10 ) {
+        if (size >= 10) {
             removeNode(head);
         }
 

@@ -18,7 +18,7 @@ public class InMemoryHistoryManagerTest {
     }
 
     @Test
-    public void TaskShouldBeSaved() {
+    public void taskShouldBeSaved() {
         Task task1 = new Task(1, "task1", "desc1", Status.NEW);
         Task task2 = new Task(2, "task2", "desс2", Status.IN_PROGRESS);
 
@@ -36,7 +36,7 @@ public class InMemoryHistoryManagerTest {
     }
 
     @Test
-    public void EpicShouldBeSaved() {
+    public void epicShouldBeSaved() {
         Epic epic1 = new Epic(1, "epic1", "desc1");
         Epic epic2 = new Epic(2, "epic2", "desc2");
 
@@ -55,7 +55,7 @@ public class InMemoryHistoryManagerTest {
     }
 
     @Test
-    public void SubtaskShouldBeSaved() {
+    public void subtaskShouldBeSaved() {
         Subtask subtask1 = new Subtask(3, "subtask1", "desc1", Status.NEW, 1);
         Subtask subtask2 = new Subtask(4, "subtask2", "desc2", Status.NEW, 2);
 
@@ -74,7 +74,7 @@ public class InMemoryHistoryManagerTest {
     }
 
     @Test
-    public void TasksShouldNotBeRepeated() {
+    public void tasksShouldNotBeRepeated() {
         Task task1 = new Task(1, "task1", "desc1", Status.NEW);
         Epic epic1 = new Epic(2, "epic1", "desc1");
         Subtask subtask1 = new Subtask(3, "subtask1", "desc1", Status.NEW, 2);
@@ -94,7 +94,7 @@ public class InMemoryHistoryManagerTest {
     }
 
     @Test
-    public void TasksShouldNotBeMore10() {
+    public void tasksShouldNotBeMore10() {
         for (int i = 0; i < 11; i++){
             historyManager.add(new Task(i, "task", "desc", Status.NEW));
         }
@@ -105,7 +105,7 @@ public class InMemoryHistoryManagerTest {
     }
 
     @Test
-    public void TasksShouldBeRemoved() {
+    public void tasksShouldBeRemoved() {
         Task task1 = new Task(1, "task1", "desc1", Status.NEW);
         Task task2 = new Task(2, "task2", "desc2", Status.NEW);
 

@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ManagersTest {
     @Test
-    public void ManagersShouldReturnNotNull() {
+    public void managersShouldReturnNotNull() {
         Managers manager = new Managers();
         TaskManager taskManager = manager.getDefault();
         Assertions.assertNotNull(taskManager, "Утилитарный класс вернул null вместо taskManager");

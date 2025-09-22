@@ -15,12 +15,12 @@ class InMemoryTaskManagerTest {
     private static InMemoryTaskManager taskManager;
 
     @BeforeEach
-    public void BeforeEach() {
+    public void beforeEach() {
         taskManager = new InMemoryTaskManager();
     }
 
     @Test
-    public void ShouldAddTaskInTaskManager() {
+    public void shouldAddTaskInTaskManager() {
         Task expectedTask = new Task("task1", "desc1", Status.NEW);
         int expectedTaskCount = 1;
 
@@ -36,7 +36,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    public void ShouldAddEpicInTaskManager() {
+    public void shouldAddEpicInTaskManager() {
         Epic expectedEpic = new Epic("epic1", "desc1");
         int expectedEpicCount = 1;
 
@@ -52,7 +52,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    public void ShouldAddSubtaskInTaskManager() {
+    public void shouldAddSubtaskInTaskManager() {
         Epic expectedEpic = new Epic("epic1", "desc1");
         Subtask expectedSubtask = new Subtask("epic1", "desc1", Status.NEW, 1);
         int expectedSubtaskCount = 1;
@@ -69,7 +69,7 @@ class InMemoryTaskManagerTest {
         Assertions.assertEquals(expectedSubtask, actualSubtask, "В список Subtasks добавлена неверная subtask");
     }
 
-    @Test void ShouldReturnTaskById() {
+    @Test void shouldReturnTaskById() {
         Task expectedTask = new Task("task1", "desc1", Status.NEW);
 
         taskManager.createTask(expectedTask);
@@ -79,7 +79,7 @@ class InMemoryTaskManagerTest {
         Assertions.assertEquals(expectedTask, actualTask, "Поиск task по id возвращает неправильную task");
     }
 
-    @Test void ShouldReturnEpicById() {
+    @Test void shouldReturnEpicById() {
         Epic expectedEpic = new Epic("epic1", "desc1");
 
         taskManager.createEpic(expectedEpic);
@@ -89,7 +89,7 @@ class InMemoryTaskManagerTest {
         Assertions.assertEquals(expectedEpic, actualEpic, "Поиск epic по id возвращает неправильную epic");
     }
 
-    @Test void ShouldReturnSubtaskById() {
+    @Test void shouldReturnSubtaskById() {
         Epic epic = new Epic("epic1", "desc1");
         Subtask expectedSubtask = new Subtask("subtask1", "desc1", Status.NEW, 1);
 
@@ -102,7 +102,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    public void ShouldBeDifferentTaskId(){
+    public void shouldBeDifferentTaskId(){
         Task task1 = new Task("task1", "desc1", Status.NEW);
         Task task2 = new Task("task2", "desc2", Status.DONE);
 
@@ -113,7 +113,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    public void ShouldBeDifferentSubtaskId() {
+    public void shouldBeDifferentSubtaskId() {
         Epic epic1 = new Epic("epic1", "desc1");
         Subtask subtask1 = new Subtask("subtask1", "desc1", Status.NEW, 1);
         Subtask subtask2 = new Subtask("subtask2", "desc2", Status.DONE, 1);
@@ -127,7 +127,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    public void ShouldBeDifferentEpicId(){
+    public void shouldBeDifferentEpicId(){
         Epic epic1 = new Epic("epic1", "desc1");
         Epic epic2 = new Epic("epic2", "desc2");
 
@@ -138,7 +138,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    public void ShouldReturnTaskWithIdEqualCalledId() {
+    public void shouldReturnTaskWithIdEqualCalledId() {
         Task expectedTask = new Task("task1", "desc1", Status.NEW);
 
         taskManager.createTask(expectedTask);
@@ -148,7 +148,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    public void ShouldReturnEpicWithIdEqualCalledId() {
+    public void shouldReturnEpicWithIdEqualCalledId() {
         Epic expectedEpic = new Epic("epic1", "desc1");
 
         taskManager.createEpic(expectedEpic);
@@ -158,7 +158,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    public void ShouldReturnSubtaskWithIdEqualCalledId() {
+    public void shouldReturnSubtaskWithIdEqualCalledId() {
         Epic epic1 = new Epic("epic1", "desc1");
         Subtask expectedSubtask = new Subtask("subtask1", "desc1", Status.NEW, 1);
 
@@ -171,7 +171,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    public void TaskDoesNotChangeWhenAdded() {
+    public void saskDoesNotChangeWhenAdded() {
         Task expectedTask = new Task("task1", "desc1", Status.NEW);
 
         taskManager.createTask(expectedTask);
@@ -187,7 +187,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    public void EpicDoesNotChangeWhenAdded() {
+    public void spicDoesNotChangeWhenAdded() {
         Epic expectedEpic = new Epic("epic1", "desc1");
 
         taskManager.createEpic(expectedEpic);
@@ -203,7 +203,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    public void SubtaskDoesNotChangeWhenAdded() {
+    public void subtaskDoesNotChangeWhenAdded() {
         Epic epic = new Epic("epic1", "desc1");
         Subtask expectedSubtask = new Subtask("subtask1", "desc1", Status.NEW, 1);
 
@@ -223,7 +223,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    public void SubtaskShouldBeRemovedFromEpic() {
+    public void subtaskShouldBeRemovedFromEpic() {
         Epic epic = new Epic(1, "epic1", "desc1");
         Subtask subtask1 = new Subtask("subtask1", "desc1", Status.NEW, 1);
         Subtask subtask2 = new Subtask("subtask2", "desc2", Status.NEW, 1);

@@ -10,4 +10,7 @@ public interface HistoryManager {
 
     // Получение последних 10 просмотренных задач
     public List<Task> getHistory();
+
+    // Удаление задачи из истории просмотра
+    public void remove(int id);
 }

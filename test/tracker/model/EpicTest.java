@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 class EpicTest {
     @Test
-    public void EpicsShouldBeEquals() {
+    public void epicsShouldBeEquals() {
         Epic epic1 = new Epic(1, "epic1", "desc1");
         Epic epic2 = new Epic(1, "epic2", "desc2");
 

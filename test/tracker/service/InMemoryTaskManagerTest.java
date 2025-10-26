@@ -1,15 +1,17 @@
 package tracker.service;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tracker.model.ReadOnlyEpic;
+import tracker.model.ReadOnlySubtask;
+import tracker.model.ReadOnlyTask;
 import tracker.model.Epic;
 import tracker.model.Status;
 import tracker.model.Subtask;
 import tracker.model.Task;
 
-import java.util.ArrayList;
+import java.util.List;
 
 class InMemoryTaskManagerTest {
     private static InMemoryTaskManager taskManager;
@@ -25,13 +27,13 @@ class InMemoryTaskManagerTest {
         int expectedTaskCount = 1;
 
         taskManager.createTask(expectedTask);
-        ArrayList<Task> tasks = taskManager.getTasks();
+        List<ReadOnlyTask> tasks = taskManager.getTasks();
 
         int actualTaskCount = tasks.size();
         Assertions.assertEquals(expectedTaskCount, actualTaskCount,
                 "В список Tasks добавлено неверное количество task");
 
-        Task actualTask = tasks.getFirst();
+        ReadOnlyTask actualTask = tasks.getFirst();
         Assertions.assertEquals(expectedTask, actualTask, "В список Tasks добавлена неверная task");
     }
 
@@ -41,13 +43,13 @@ class InMemoryTaskManagerTest {
         int expectedEpicCount = 1;
 
         taskManager.createEpic(expectedEpic);
-        ArrayList<Epic> epics = taskManager.getEpics();
+        List<ReadOnlyEpic> epics = taskManager.getEpics();
 
         int actualEpicCount = epics.size();
         Assertions.assertEquals(expectedEpicCount, actualEpicCount,
                 "В список Epics добавлено неверное количество epic");
 
-        Task actualEpic = epics.getFirst();
+        ReadOnlyEpic actualEpic = epics.getFirst();
         Assertions.assertEquals(expectedEpic, actualEpic, "В список Epic добавлена неверная epic");
     }
 
@@ -59,13 +61,13 @@ class InMemoryTaskManagerTest {
 
         taskManager.createEpic(expectedEpic);
         taskManager.createSubtask(expectedSubtask);
-        ArrayList<Subtask> subtasks = taskManager.getSubtasks();
+        List<ReadOnlySubtask> subtasks = taskManager.getSubtasks();
 
         int actualEpicCount = subtasks.size();
         Assertions.assertEquals(expectedSubtaskCount, actualEpicCount,
                 "В список Subtasks добавлено неверное количество subtask");
 
-        Subtask actualSubtask = subtasks.getFirst();
+        ReadOnlySubtask actualSubtask = subtasks.getFirst();
         Assertions.assertEquals(expectedSubtask, actualSubtask, "В список Subtasks добавлена неверная subtask");
     }
 
@@ -74,7 +76,7 @@ class InMemoryTaskManagerTest {
 
         taskManager.createTask(expectedTask);
 
-        Task actualTask = taskManager.getTaskById(1);
+        ReadOnlyTask actualTask = taskManager.getTaskById(1);
 
         Assertions.assertEquals(expectedTask, actualTask, "Поиск task по id возвращает неправильную task");
     }
@@ -84,7 +86,7 @@ class InMemoryTaskManagerTest {
 
         taskManager.createEpic(expectedEpic);
 
-        Epic actualEpic = taskManager.getEpicById(1);
+        ReadOnlyEpic actualEpic = taskManager.getEpicById(1);
 
         Assertions.assertEquals(expectedEpic, actualEpic, "Поиск epic по id возвращает неправильную epic");
     }
@@ -96,7 +98,7 @@ class InMemoryTaskManagerTest {
         taskManager.createEpic(epic);
         taskManager.createSubtask(expectedSubtask);
 
-        Subtask actualSubtask = taskManager.getSubtaskById(2);
+        ReadOnlySubtask actualSubtask = taskManager.getSubtaskById(2);
 
         Assertions.assertEquals(expectedSubtask, actualSubtask, "Поиск subtask по id возвращает неправильную subtask");
     }
@@ -142,7 +144,7 @@ class InMemoryTaskManagerTest {
         Task expectedTask = new Task("task1", "desc1", Status.NEW);
 
         taskManager.createTask(expectedTask);
-        Task actualTask = taskManager.getTaskById(1);
+        ReadOnlyTask actualTask = taskManager.getTaskById(1);
 
         Assertions.assertEquals(expectedTask, actualTask, "Id возвращаемой task не соответствует запрошенному id");
     }
@@ -152,7 +154,7 @@ class InMemoryTaskManagerTest {
         Epic expectedEpic = new Epic("epic1", "desc1");
 
         taskManager.createEpic(expectedEpic);
-        Epic actualEpic = taskManager.getEpicById(1);
+        ReadOnlyEpic actualEpic = taskManager.getEpicById(1);
 
         Assertions.assertEquals(expectedEpic, actualEpic, "Id возвращаемой epic не соответствует запрошенному id");
     }
@@ -164,7 +166,7 @@ class InMemoryTaskManagerTest {
 
         taskManager.createEpic(epic1);
         taskManager.createSubtask(expectedSubtask);
-        Task actualSubtask = taskManager.getSubtaskById(2);
+        ReadOnlySubtask actualSubtask = taskManager.getSubtaskById(2);
 
         Assertions.assertEquals(expectedSubtask, actualSubtask,
                 "Id возвращаемой subtask не соответствует запрошенному id");
@@ -176,7 +178,7 @@ class InMemoryTaskManagerTest {
 
         taskManager.createTask(expectedTask);
 
-        Task actualTask = taskManager.getTaskById(1);
+        ReadOnlyTask actualTask = taskManager.getTaskById(1);
 
         Assertions.assertEquals(expectedTask.getName(), actualTask.getName(),
                 "При добавлении task изменяется поле name");
@@ -192,7 +194,7 @@ class InMemoryTaskManagerTest {
 
         taskManager.createEpic(expectedEpic);
 
-        Epic actualEpic = taskManager.getEpicById(1);
+        ReadOnlyEpic actualEpic = taskManager.getEpicById(1);
 
         Assertions.assertEquals(expectedEpic.getName(), actualEpic.getName(),
                 "При добавлении epic изменяется поле name");
@@ -210,7 +212,7 @@ class InMemoryTaskManagerTest {
         taskManager.createEpic(epic);
         taskManager.createSubtask(expectedSubtask);
 
-        Subtask actualSubtask = taskManager.getSubtaskById(2);
+        ReadOnlySubtask actualSubtask = taskManager.getSubtaskById(2);
 
         Assertions.assertEquals(expectedSubtask.getName(), actualSubtask.getName(),
                 "При добавлении subtask изменяется поле name");

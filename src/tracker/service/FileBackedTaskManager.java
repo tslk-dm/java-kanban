@@ -25,8 +25,8 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
                 }
                 Files.createFile(path);
             }
-        } catch (IOException e) {
-            throw new ManagerSaveException(e);
+        } catch (IOException exception) {
+            throw new ManagerSaveException(exception);
         }
     }
 
@@ -51,11 +51,11 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
                     case TASK -> createTask(Task.fromCsv(line));
                     case EPIC -> createEpic(Epic.fromCsv(line));
                     case SUBTASK -> createSubtask(Subtask.fromCsv(line));
-                    default -> throw new IllegalStateException("Unexpected value: " + taskType);
+                    default -> throw new IllegalStateException(String.format("Unexpected value: %s", taskType));
                 }
             }
-        } catch (IOException e) {
-            throw new ManagerSaveException("Не удалось загрузить данные из файла " + path, e);
+        } catch (IOException exception) {
+            throw new ManagerSaveException(String.format("Не удалось загрузить данные из файла %s", path), exception);
         }
     }
 
@@ -68,8 +68,9 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
                 writer.write(task.toCsv());
                 writer.newLine();
             }
-        } catch (IOException e) {
-            throw new ManagerSaveException("Не удалось сохранить данные в файл " + path, e);
+        } catch (IOException exception) {
+            throw new ManagerSaveException(String.format("Не удалось сохранить данные в файл %s", path), exception);
+
         }
     }
 

@@ -1,6 +1,8 @@
 package tracker.model;
 
-public class Task {
+import tracker.enums.TaskType;
+
+public class Task implements ReadOnlyTask {
     private int id;
     private String name;
     private String description;
@@ -72,5 +74,25 @@ public class Task {
     @Override
     public int hashCode() {
         return id;
+    }
+
+    public static Task fromCsv(String value) {
+        String[] splitValue = value.split(",");
+        int id = Integer.parseInt(splitValue[0]);
+        String name = splitValue[2];
+        Status status = Status.valueOf(splitValue[3]);
+        String description = splitValue[4];
+        return new Task(id, name, description, status);
+    }
+
+    public String toCsv() {
+        return String.format(
+                "%d,%s,%s,%s,%s,",
+                id,
+                TaskType.TASK.name(),
+                name,
+                status.name(),
+                description
+        );
     }
 }

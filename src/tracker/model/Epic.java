@@ -1,8 +1,13 @@
 package tracker.model;
 
-import java.util.ArrayList;
+import tracker.enums.TaskType;
 
-public class Epic extends Task {
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+
+public class Epic extends Task implements ReadOnlyEpic {
     private ArrayList<Subtask> subtasks;
 
     public Epic(String name, String description) {
@@ -15,8 +20,17 @@ public class Epic extends Task {
         this.subtasks = new ArrayList<>();
     }
 
-    public ArrayList<Subtask> getSubtasks() {
-        return subtasks;
+    public Epic(int id, String name, String description, Status status) {
+        super(id, name, description, status);
+        this.subtasks = new ArrayList<>();
+    }
+
+//    public List<? extends ReadOnlySubtask> getSubtasks() {
+//        return Collections.unmodifiableList(subtasks);
+//    }
+
+    public List<ReadOnlySubtask> getSubtasks() {
+        return Collections.unmodifiableList(subtasks);
     }
 
     public void addSubtask(Subtask subtask) {
@@ -64,5 +78,27 @@ public class Epic extends Task {
                 ", status=" + super.getStatus() +
                 ", subtasks=" + subtasks +
                 '}';
+    }
+
+
+    public static Epic fromCsv(String value) {
+        String[] splitValue = value.split(",");
+        int id = Integer.parseInt(splitValue[0]);
+        String name = splitValue[2];
+        Status status = Status.valueOf(splitValue[3]);
+        String description = splitValue[4];
+        return new Epic(id, name, description, status);
+    }
+
+    @Override
+    public String toCsv() {
+        return String.format(
+                "%d,%s,%s,%s,%s,",
+                super.getId(),
+                TaskType.EPIC.name(),
+                super.getName(),
+                super.getStatus().name(),
+                super.getDescription()
+        );
     }
 }

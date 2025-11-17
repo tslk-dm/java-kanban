@@ -1,66 +1,52 @@
 package tracker.service;
 
+import tracker.model.ReadOnlyEpic;
+import tracker.model.ReadOnlySubtask;
+import tracker.model.ReadOnlyTask;
 import tracker.model.Epic;
 import tracker.model.Subtask;
 import tracker.model.Task;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface TaskManager {
-    // Получение списка всех задач
-    ArrayList<Task> getTasks();
+    List<ReadOnlyTask> getTasks();
 
-    // Удаление всех задач
     void deleteTasks();
 
-    // Получение задачи по идентификатору
-    Task getTaskById(int id);
+    ReadOnlyTask createTask(Task task);
 
-    // Создание задачи
-    Task createTask(Task task);
+    ReadOnlyTask updateTask(Task task);
 
-    // Обновление задачи
-    Task updateTask(Task task);
+    ReadOnlyTask getTaskById(int id);
 
-    // Удаление задачи по идентификатору
-    Task deleteTaskById(int id);
+    ReadOnlyTask deleteTaskById(int id);
 
-    // Получение списка всех эпиков
-    ArrayList<Epic> getEpics();
 
-    // Удаление всех эпиков
+    List<ReadOnlyEpic> getEpics();
+
     void deleteEpics();
 
-    // Получение эпика по идентификатору
-    Epic getEpicById(int id);
+    ReadOnlyEpic createEpic(Epic epic);
 
-    // Создание эпика
-    Epic createEpic(Epic epic);
+    ReadOnlyEpic updateEpic(Epic epic);
 
-    // Обновление эпика
-    Epic updateEpic(Epic epic);
+    ReadOnlyEpic getEpicById(int id);
 
-    // Удаление эпика по идентификатору
-    Epic deleteEpicById(int id);
+    ReadOnlyEpic deleteEpicById(int id);
 
-    // Получение списка всех подзадач определённого эпика
-    ArrayList<Subtask> getSubtasksByEpicId(int id);
+    List<ReadOnlySubtask> getSubtasks();
 
-    // Получение списка всех подзадач
-    ArrayList<Subtask> getSubtasks();
-
-    // Удаление всех подзадач
     void deleteSubtasks();
 
-    // Получение подзадачи по идентификатору
-    Subtask getSubtaskById(int id);
 
-    // Создание подзадачи
-    Subtask createSubtask(Subtask subtask);
+    List<ReadOnlySubtask> getSubtasksByEpicId(int id);
 
-    // Обновление подзадачи
-    Subtask updateSubtask(Subtask subtask);
+    ReadOnlySubtask createSubtask(Subtask subtask);
 
-    // Удаление подзадачи по идентификатору
-    Subtask deleteSubtaskById(int id);
+    ReadOnlySubtask updateSubtask(Subtask subtask);
+
+    ReadOnlySubtask getSubtaskById(int id);
+
+    ReadOnlySubtask deleteSubtaskById(int id);
 }
